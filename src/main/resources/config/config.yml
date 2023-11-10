@@ -1,0 +1,4 @@
+# System environment variables: ENV
+# yml file: YML
+source: "ENV"
+bot-token: "BOT_TOKEN"
