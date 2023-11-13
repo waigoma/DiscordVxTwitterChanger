@@ -16,7 +16,7 @@ class Main {
     fun main(){
         loadFile()
         TOKEN = yaml.DataManager.getBotToken()
-        Main().connect()
+        connect()
     }
 
     private fun loadFile() {
@@ -27,7 +27,15 @@ class Main {
     private fun connect() {
         try {
             // Login 処理
-            JDABuilder.createLight(TOKEN, GatewayIntent.GUILD_MESSAGES, GatewayIntent.DIRECT_MESSAGES)
+            JDABuilder
+                .createLight(
+                    TOKEN,
+                    GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MEMBERS,
+                    GatewayIntent.MESSAGE_CONTENT, GatewayIntent.DIRECT_MESSAGES
+                )
+                .addEventListeners(
+                    MessageListener(),
+                )
                 .setActivity(Activity.playing("作業")) // "～をプレイ中" の ～の部分
                 .build()
         } catch (e: LoginException) {
