@@ -25,7 +25,7 @@ class YamlLoader {
                 return
             }
 
-            logger.info("Loading com.rokken.data from yml...")
+            logger.info("Loading from yml...")
             val botToken = data["bot-token"]!!.toString()
 
             DataManager.initializeData(botToken)
